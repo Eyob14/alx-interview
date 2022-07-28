@@ -5,14 +5,20 @@ of integers that represents the pascal's triangle
 """
 def pascal_triangle(n):
     """create a list of lists of integers
+    
+    parameters:
+        n [int]:
+            the number of rows
 
-    Args:
-        n [int]: the number of rows
-
-    Returns:
-        [list of lists of ints]: representing the pascal's triangle
+    return:
+        [list of lists of ints]:
+            representing the pascal's triangle
     """
+    if type(n) is not int:
+        raise TypeError("n must be an integer")
     matrix = []
+    if n <= 0:
+        return matrix
     for i in range(n):
         arr = []
         for j in range(i+1):
