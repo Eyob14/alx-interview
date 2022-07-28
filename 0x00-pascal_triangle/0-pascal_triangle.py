@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+0-pascal_triangle
+pascal_triangle - Prints a pascal triangle
+"""
 def pascal_triangle(n):
     matrix = []
     for i in range(n):
