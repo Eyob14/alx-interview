@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """
 Defines a function that returns a list of lists
-of integers that represents the pascal's triangle
+of integers that represents the pascal's triangle.
 """
+
+
 def pascal_triangle(n):
     """create a list of lists of integers
-    
     parameters:
         n [int]:
             the number of rows
@@ -28,5 +29,5 @@ def pascal_triangle(n):
                 arr.append(1)
             else:
                 arr.append(matrix[i-1][j-1] + matrix[i-1][j])
-        matrix.append(arr)    
+        matrix.append(arr)
     return matrix
