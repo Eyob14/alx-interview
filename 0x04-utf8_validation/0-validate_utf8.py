@@ -1,34 +1,19 @@
 #!/usr/bin/python3
-"""
-Write a method that determines if a given data set represents
-a valid UTF-8 encoding.
-Prototype: def validUTF8(data)
-Return: True if data is a valid UTF-8 encoding, else return False
-A character in UTF-8 can be 1 to 4 bytes long
-The data set can contain multiple characters
-The data will be represented by a list of integers
-Each integer represents 1 byte of data, therefore you only need to
-handle the 8 least significant bits of each integer
-"""
+"""Module for validating UTF-8 encoding"""
 
 
 def validUTF8(data):
-    """
-    Function to check the UTF-8 encoding of a data
-    Args:
-        data: list of integers
-    Return: True if it satisfies the condition, False otherwise
-    """
+    """Validates UTF-8 encoding"""
     index = 0
     length = len(data)
-    def getbinary(x): return format(x, 'b').zfill(8)
+    def getBinary(x): return format(x, 'b').zfill(8)
     while index < length:
-        num = getbinary(data[index])
+        num = getBinary(data[index])
         if num[0] == '0':
             index += 1
         elif num[0:3] == '110':
             if length - index > 1:
-                temp = getbinary(data[index+1])
+                temp = getBinary(data[index+1])
                 if temp[0:2] != '10':
                     return False
                 else:
@@ -41,7 +26,7 @@ def validUTF8(data):
             else:
                 index += 1
                 for i in range(2):
-                    temp = getbinary(data[index])
+                    temp = getBinary(data[index])
                     if temp[0:2] != '10':
                         return False
                     index += 1
@@ -49,7 +34,7 @@ def validUTF8(data):
             if length - index > 3:
                 index += 1
                 for i in range(3):
-                    temp = getbinary(data[index])
+                    temp = getBinary(data[index])
                     if temp[0:2] != '10':
                         return False
                     index += 1
